@@ -23,11 +23,13 @@ import {CreateComponent} from './component';
 import {CreateFromFileComponent} from './from/file/component';
 import {CreateFromFormModule} from './from/form/module';
 import {CreateFromInputComponent} from './from/input/component';
+import {CreateFromNodeModule} from './from/node/module';
 import {CreateRoutingModule} from './routing';
+import { CWM } from '@common/services/global/cwm';
 
 @NgModule({
-  imports: [SharedModule, ComponentsModule, CreateFromFormModule, CreateServiceModule, CreateRoutingModule],
+  imports: [SharedModule, ComponentsModule, CreateFromFormModule, CreateFromNodeModule, CreateServiceModule, CreateRoutingModule],
   declarations: [CreateComponent, CreateFromInputComponent, CreateFromFileComponent],
-  providers: [CanDeactivateGuard],
+  providers: [CanDeactivateGuard, CWM],
 })
 export class CreateModule {}

@@ -12,11 +12,39 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {NgModule} from '@angular/core';
-import {CreateService} from './service';
-import {CreateNode} from './node';
+@use '../../../../variables' as *;
 
-@NgModule({
-  providers: [CreateService, CreateNode]
-})
-export class CreateServiceModule {}
+// Align items only in the current layout (kd-help-section).
+.kd-help-section ::ng-deep > {
+  * {
+    flex: 1;
+    flex-basis: auto;
+    margin: $baseline-grid 0;
+    width: 100%;
+
+    &:last-child {
+      padding-left: 4 * $baseline-grid;
+    }
+
+    &:first-child {
+      max-width: 48.5%;
+    }
+  }
+}
+
+@media (width <= 959px) {
+  .kd-help-section ::ng-deep > {
+    * {
+      &:first-child {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.kd-help-section {
+  & kd-port-mappings {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}

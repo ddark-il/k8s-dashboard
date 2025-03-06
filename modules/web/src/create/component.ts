@@ -17,6 +17,7 @@ import {ICanDeactivate} from '@common/interfaces/candeactivate';
 import {CreateFromFileComponent} from './from/file/component';
 import {CreateFromFormComponent} from './from/form/component';
 import {CreateFromInputComponent} from './from/input/component';
+import {CreateFromNodeComponent} from './from/node/component';
 
 @Component({
   selector: 'kd-create',
@@ -27,8 +28,9 @@ export class CreateComponent extends ICanDeactivate {
   @ViewChild(CreateFromInputComponent) fromInput: CreateFromInputComponent;
   @ViewChild(CreateFromFileComponent) fromFile: CreateFromFileComponent;
   @ViewChild(CreateFromFormComponent) fromForm: CreateFromFormComponent;
+  @ViewChild(CreateFromNodeComponent) fromNode: CreateFromNodeComponent;
 
   canDeactivate(): boolean {
-    return this.fromInput.canDeactivate() && this.fromFile.canDeactivate() && this.fromForm.canDeactivate();
+    return this.fromInput.canDeactivate() && this.fromFile.canDeactivate() && this.fromForm.canDeactivate() && this.fromNode.canDeactivate();
   }
 }
