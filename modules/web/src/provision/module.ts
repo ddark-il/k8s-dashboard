@@ -13,10 +13,16 @@
 // limitations under the License.
 
 import {NgModule} from '@angular/core';
-import {CreateService} from './service';
-import {CreateNode} from './node';
+import {ComponentsModule} from '@common/components/module';
+import {CreateServiceModule} from '@common/services/create/module';
+import {SharedModule} from '../shared.module';
+import {ProvisionQueueComponent} from './component';
+import {CreateRoutingModule} from './routing';
+import {CWM} from '@common/services/global/cwm';
 
 @NgModule({
-  providers: [CreateService, CreateNode]
+  imports: [SharedModule, ComponentsModule, CreateServiceModule, CreateRoutingModule],
+  declarations: [ProvisionQueueComponent],
+  providers: [CWM],
 })
-export class CreateServiceModule {}
+export class CreateModule {}

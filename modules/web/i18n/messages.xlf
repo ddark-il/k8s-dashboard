@@ -1976,6 +1976,9 @@
       <trans-unit id="5883804203832913220" datatype="html">
         <source>Hide All Namespaces option</source>
       </trans-unit>
+      <trans-unit id="5462107679329827733" datatype="html">
+        <source>Provision Queue</source>
+      </trans-unit>
       <trans-unit id="8967487471439603323" datatype="html">
         <source>Hides all-namespaces option from the namespaces dropdown list in UI.</source>
       </trans-unit>

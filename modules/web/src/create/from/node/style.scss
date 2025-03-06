@@ -12,11 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {NgModule} from '@angular/core';
-import {CreateService} from './service';
-import {CreateNode} from './node';
+@use '../../../variables' as *;
 
-@NgModule({
-  providers: [CreateService, CreateNode]
-})
-export class CreateServiceModule {}
+.kd-block {
+  display: block;
+}
+
+.kd-deploy-input-row {
+  margin-bottom: $baseline-grid;
+  margin-top: $baseline-grid;
+}
+
+$bar-height: 0.5px;
+

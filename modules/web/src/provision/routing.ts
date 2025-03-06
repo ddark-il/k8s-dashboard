@@ -13,10 +13,20 @@
 // limitations under the License.
 
 import {NgModule} from '@angular/core';
-import {CreateService} from './service';
-import {CreateNode} from './node';
+import {Route, RouterModule} from '@angular/router';
+import {BREADCRUMBS} from '../index.messages';
+import {ProvisionQueueComponent} from './component';
+
+const CREATE_ROUTE: Route = {
+  path: '',
+  component: ProvisionQueueComponent,
+  data: {
+    breadcrumb: BREADCRUMBS.ProvisionQueue,
+  },
+};
 
 @NgModule({
-  providers: [CreateService, CreateNode]
+  imports: [RouterModule.forChild([CREATE_ROUTE])],
+  exports: [RouterModule],
 })
-export class CreateServiceModule {}
+export class CreateRoutingModule {}

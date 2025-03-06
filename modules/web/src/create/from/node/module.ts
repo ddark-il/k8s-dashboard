@@ -12,11 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {CreateService} from './service';
-import {CreateNode} from './node';
+import {ComponentsModule} from '@common/components/module';
+import {SharedModule} from '../../../shared.module';
+import {CreateFromNodeComponent} from './component';
+import {HelpSectionComponent} from './helpsection/component';
+import {UserHelpComponent} from './helpsection/userhelp/component';
 
 @NgModule({
-  providers: [CreateService, CreateNode]
+  declarations: [
+    HelpSectionComponent,
+    CreateFromNodeComponent,
+    UserHelpComponent,
+  ],
+  imports: [CommonModule, SharedModule, ComponentsModule],
+  exports: [CreateFromNodeComponent],
 })
-export class CreateServiceModule {}
+export class CreateFromNodeModule {}

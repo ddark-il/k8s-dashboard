@@ -19,6 +19,7 @@ export enum ListIdentifier {
   roleBinding = 'roleBindingList',
   namespace = 'namespaceList',
   node = 'nodeList',
+  pnode = 'provisionList',
   persistentVolume = 'persistentVolumeList',
   storageClass = 'storageClassList',
   ingressClass = 'ingressClassList',

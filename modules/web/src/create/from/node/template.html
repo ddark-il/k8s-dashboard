@@ -1,0 +1,76 @@
+<!--
+Copyright 2017 The Kubernetes Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<form
+  [formGroup]="form"
+  novalidate
+>
+
+<kd-help-section>
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="nodePrefix"
+      placeholder="Node Prefix"
+      kdValidImageReference
+      required
+    />
+  </mat-form-field>
+
+  <kd-user-help>
+    <ng-container
+      >Prefix for worker nodes(nodes would be created as worker-01, worker-02, etc)</ng-container
+    >
+  </kd-user-help>
+</kd-help-section>
+
+<kd-help-section>
+  <mat-form-field>
+    <input
+      matInput
+      type="number"
+      formControlName="nodeCount"
+      placeholder="Number of Worker Nodes"
+      min="1"
+      kdWarnThreshold="100"
+      required
+    />
+  </mat-form-field>
+  <kd-user-help>
+    <ng-container 
+      >Number of nodes to be created</ng-container
+    >
+  </kd-user-help>
+</kd-help-section>
+</form>
+
+<button
+  type="button"
+  (click)="create()"
+  [disabled]="isCreateDisabled()"
+  color="primary"
+  mat-raised-button
+>
+  Deploy
+</button>
+
+<button
+  type="button"
+  (click)="cancel()"
+  color="primary"
+  mat-button
+>
+  Cancel
+</button>

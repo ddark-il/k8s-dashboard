@@ -186,6 +186,7 @@ export enum IBreadcrumbMessageKey {
   Namespaces = 'Namespaces',
   NetworkPolicies = 'NetworkPolicies',
   Nodes = 'Nodes',
+  ProvisionQueue = 'ProvisionQueue',
   PersistentVolumes = 'PersistentVolumes',
   RoleBindings = 'RoleBindings',
   Roles = 'Roles',

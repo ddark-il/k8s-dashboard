@@ -19,7 +19,7 @@ app:
   # - api - deploys just the API
   mode: 'dashboard'
   image:
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     pullSecrets: []
   scheduling:
     # Node labels for pod assignment
@@ -101,12 +101,11 @@ app:
     #  #  Is this CRD namespaced?
     #  namespaced: true
   ingress:
-    enabled: false
+    enabled: true
     hosts:
       # Keep 'localhost' host only if you want to access Dashboard using 'kubectl port-forward ...' on:
       # https://localhost:8443
-      - localhost
-    # - kubernetes.dashboard.domain.com
+      - 0.0.0.0
     ingressClassName: internal-nginx
     # Use only if your ingress controllers support default ingress classes.
     # If set to true ingressClassName will be ignored and not added to the Ingress resources.
@@ -144,8 +143,8 @@ app:
 auth:
   role: auth
   image:
-    repository: docker.io/kubernetesui/dashboard-auth
-    tag: 1.2.3
+    repository: ghcr.io/ddark-il/dashboard-auth
+    tag: latest
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -182,12 +181,37 @@ auth:
   serviceLabels: {}
   serviceAnnotations: {}
 
+provision:
+  role: provision
+  image:
+    repository: ghcr.io/ddark-il/cwm-provisioner
+    tag: latest
+  scaling:
+    replicas: 1
+    revisionHistoryLimit: 10
+  service:
+    type: ClusterIP
+    extraSpec: ~
+  containers:
+    ports:
+      - name: api
+        containerPort: 5000
+        protocol: TCP
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 5000
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 5000
+
 # API deployment configuration
 api:
   role: api
   image:
-    repository: docker.io/kubernetesui/dashboard-api
-    tag: 1.10.3
+    repository: ghcr.io/ddark-il/dashboard-api
+    tag: latest
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -246,8 +270,9 @@ api:
 web:
   role: web
   image:
-    repository: docker.io/kubernetesui/dashboard-web
-    tag: 1.6.2
+    pullPolicy: Always
+    repository: ghcr.io/ddark-il/dashboard-web 
+    tag: latest
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -407,7 +432,7 @@ cert-manager:
 ## Optional Nginx Ingress sub-chart configuration
 ## Enable this if you don't already have nginx-ingress enabled on your cluster.
 nginx:
-  enabled: false
+  enabled: true
   controller:
     electionID: ingress-controller-leader
     ingressClassResource:
@@ -415,7 +440,8 @@ nginx:
       default: false
       controllerValue: k8s.io/internal-ingress-nginx
     service:
-      type: ClusterIP
+      externalIPs:
+      - 1.1.1.1
 
 ## Extra configurations:
 ## - manifests

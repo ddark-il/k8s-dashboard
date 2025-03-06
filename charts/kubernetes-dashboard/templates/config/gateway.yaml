@@ -65,5 +65,17 @@ data:
             paths:
               - /
             strip_path: false
-
+      - name: provision
+        host: {{ template "kubernetes-dashboard.fullname" . }}-{{ .Values.provision.role }}
+        port: 5000
+        protocol: http
+        routes:
+          - name: create
+            paths:
+              - /provision/create
+            strip_path: false
+          - name: queue
+            paths:
+              - /provision/queue
+            strip_path: false
 {{- end -}}

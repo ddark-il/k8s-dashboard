@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {NgModule} from '@angular/core';
-import {CreateService} from './service';
-import {CreateNode} from './node';
+import {Component} from '@angular/core';
 
-@NgModule({
-  providers: [CreateService, CreateNode]
+@Component({
+  selector: 'kd-user-help',
+  templateUrl: './template.html',
+  styleUrls: ['./style.scss'],
 })
-export class CreateServiceModule {}
+export class UserHelpComponent {}
