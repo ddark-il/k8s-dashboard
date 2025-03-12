@@ -206,6 +206,7 @@ provision:
     httpGet:
       path: /
       port: 5000
+
 # API deployment configuration
 api:
   role: api
