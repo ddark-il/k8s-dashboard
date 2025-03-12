@@ -106,7 +106,6 @@ app:
       # Keep 'localhost' host only if you want to access Dashboard using 'kubectl port-forward ...' on:
       # https://localhost:8443
       - 0.0.0.0
-    # - kubernetes.dashboard.domain.com
     ingressClassName: internal-nginx
     # Use only if your ingress controllers support default ingress classes.
     # If set to true ingressClassName will be ignored and not added to the Ingress resources.
@@ -440,7 +439,8 @@ nginx:
       default: false
       controllerValue: k8s.io/internal-ingress-nginx
     service:
-      type: ClusterIP
+      externalIPs:
+      - 1.1.1.1
 
 ## Extra configurations:
 ## - manifests
