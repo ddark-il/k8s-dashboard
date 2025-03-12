@@ -101,11 +101,11 @@ app:
     #  #  Is this CRD namespaced?
     #  namespaced: true
   ingress:
-    enabled: false
+    enabled: true
     hosts:
       # Keep 'localhost' host only if you want to access Dashboard using 'kubectl port-forward ...' on:
       # https://localhost:8443
-      - localhost
+      - 0.0.0.0
     # - kubernetes.dashboard.domain.com
     ingressClassName: internal-nginx
     # Use only if your ingress controllers support default ingress classes.
