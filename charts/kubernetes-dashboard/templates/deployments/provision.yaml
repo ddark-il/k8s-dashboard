@@ -58,7 +58,6 @@ spec:
           imagePullPolicy: {{ .Values.app.image.pullPolicy }}
           args:
             - --namespace={{ .Release.Namespace }}
-            - --metrics-scraper-service-name={{ template "kubernetes-dashboard.metrics-scraper.name" . }}
           {{- with .Values.provision.containers.args }}
           {{ toYaml . | nindent 12 }}
           {{- end }}
