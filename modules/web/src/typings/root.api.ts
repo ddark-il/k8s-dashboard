@@ -165,6 +165,10 @@ export interface NodeList extends ResourceList {
   nodes: Node[];
 }
 
+export interface ProvisionList extends ResourceList {
+  nodes: ProvisionedNode[];
+}
+
 export interface PersistentVolumeClaimList extends ResourceList {
   items: PersistentVolumeClaim[];
 }
@@ -346,6 +350,12 @@ export interface Namespace extends Resource {
 
 export interface Node extends Resource {
   ready: string;
+}
+
+export interface ProvisionedNode extends Resource{
+  created: string;
+  status: string;
+  error: string;
 }
 
 export interface PersistentVolume extends Resource {

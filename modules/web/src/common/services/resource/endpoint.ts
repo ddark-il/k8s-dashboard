@@ -52,6 +52,7 @@ export enum Resource {
 
 export enum Utility {
   shell = 'shell',
+  provision = 'provision',
 }
 
 class ResourceEndpoint {

@@ -29,13 +29,13 @@ export class CreateNode {
     @Inject(CONFIG_DI_TOKEN) private readonly CONFIG: IConfig
   ) {}
 
-  async deploy(prefix: string, count: number, isprivate: boolean): Promise<Object> {
+  async deploy(prefix: string, count: number): Promise<Object> {
     for (let index = 1; index < count+1; index++) {
-      this.cwm_.deployNode(`${prefix}-${index.toString().padStart(2, '0')}` ,isprivate)
+      this.cwm_.deployNode(`${prefix}-${index.toString().padStart(2, '0')}`)
         .then()
         .catch((err) => {
           console.log(err)
-          this.reportError_(`Error ${err.error["errors"][0]["code"]}: ${err.error["errors"][0]["category"]}`,err.error["errors"][0]["info"])
+          this.reportError_(`${err.name}`,err.error["error"])
         });
     }
     return 0;

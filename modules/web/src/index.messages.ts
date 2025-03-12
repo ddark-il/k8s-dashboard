@@ -58,6 +58,7 @@ export const BREADCRUMBS: IBreadcrumbMessage = {
   [IBreadcrumbMessageKey.Namespaces]: $localize`Namespaces`,
   [IBreadcrumbMessageKey.NetworkPolicies]: $localize`Network Policies`,
   [IBreadcrumbMessageKey.Nodes]: $localize`Nodes`,
+  [IBreadcrumbMessageKey.ProvisionQueue]: $localize`Provision Queue`,
   [IBreadcrumbMessageKey.PersistentVolumes]: $localize`Persistent Volumes`,
   [IBreadcrumbMessageKey.RoleBindings]: $localize`Role Bindings`,
   [IBreadcrumbMessageKey.Roles]: $localize`Roles`,

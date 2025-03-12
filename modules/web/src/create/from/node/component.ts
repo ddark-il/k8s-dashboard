@@ -70,9 +70,9 @@ export class CreateFromNodeComponent extends ICanDeactivate implements OnInit {
   }
 
   create(): void {
-    this.create_.deploy(this.nodePrefix.value, this.nodeCount.value, this.isPrivate.value).then(() => {
+    this.create_.deploy(this.nodePrefix.value, this.nodeCount.value).then(() => {
       this.created_ = true;
-      this.router_.navigate(['overview'], {
+      this.router_.navigate(['provision'], {
         queryParams: {[NAMESPACE_STATE_PARAM]: this.namespace_.current()},
       });
     });

@@ -182,6 +182,30 @@ auth:
   serviceLabels: {}
   serviceAnnotations: {}
 
+cwm-provisioner:
+  role: cwm-provisioner
+  image:
+    repository: ghcr.io/ddark-il/cwm-provisioner
+    tag: latest
+  scaling:
+    replicas: 1
+    revisionHistoryLimit: 10
+  service:
+    type: ClusterIP
+    extraSpec: ~
+  containers:
+    ports:
+      - name: api
+        containerPort: 8000
+        protocol: TCP
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 5000
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 5000
 # API deployment configuration
 api:
   role: api

@@ -185,6 +185,10 @@ const routes: Routes = [
         loadChildren: () => import('shell/module').then(m => m.ShellModule),
       },
       {
+        path: 'provision',
+        loadChildren: () => import('provision/module').then(m => m.CreateModule),
+      },
+      {
         path: 'search',
         loadChildren: () => import('search/module').then(m => m.SearchModule),
         runGuardsAndResolvers: 'always',

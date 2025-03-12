@@ -22,5 +22,11 @@
     "secure": false,
     "ws": true,
     "changeOrigin": true
+  },
+  "/provision": {
+    "target": "http://cwm-provisioner:5000",
+    "secure": false,
+    "ws": true,
+    "changeOrigin": true
   }
 }
