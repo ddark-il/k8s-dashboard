@@ -183,7 +183,7 @@ auth:
   serviceAnnotations: {}
 
 cwm-provisioner:
-  role: cwm-provisioner
+  role: provision
   image:
     repository: ghcr.io/ddark-il/cwm-provisioner
     tag: latest
