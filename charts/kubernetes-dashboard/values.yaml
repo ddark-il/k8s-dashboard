@@ -144,7 +144,7 @@ auth:
   role: auth
   image:
     repository: ghcr.io/ddark-il/dashboard-auth
-    tag: 1.32
+    tag: latest
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -185,7 +185,7 @@ provision:
   role: provision
   image:
     repository: ghcr.io/ddark-il/cwm-provisioner
-    tag: 1.32
+    tag: latest
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -211,7 +211,7 @@ api:
   role: api
   image:
     repository: ghcr.io/ddark-il/dashboard-api
-    tag: 1.32
+    tag: latest
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -272,7 +272,7 @@ web:
   image:
     pullPolicy: Always
     repository: ghcr.io/ddark-il/dashboard-web 
-    tag: 1.32
+    tag: latest
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
