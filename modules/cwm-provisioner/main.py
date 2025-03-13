@@ -19,6 +19,7 @@ provider_token = {
 def decode_data():
     for item in queue_array:
         if not "status" in item.keys():
+            print(item)
             item["secrets"]["password"] = base64.b64decode(item["secrets"]["password"]).decode("ascii").rstrip()
             item["secrets"]["apiClientId"] = base64.b64decode(item["secrets"]["apiClientId"]).decode("ascii").rstrip()
             item["secrets"]["apiSecret"] = base64.b64decode(item["secrets"]["apiSecret"]).decode("ascii").rstrip()
@@ -53,8 +54,6 @@ def send_deploy_to_provider(token,item):
             "billing": item["spec"]["billing"],
             "network_name_0": item["spec"]["network_name_0"],
             "network_ip_0": item["spec"]["network_ip_0"],
-            "network_name_1": item["spec"]["network_name_1"],
-            "network_ip_1": item["spec"]["network_ip_1"],
             "traffic": item["spec"]["traffic"],
             "disk_size_0": item["spec"]["disk_size_0"],
             "power": item["spec"]["power"],
@@ -114,7 +113,7 @@ def connect_to_nodes():
                     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                     ssh_client.connect(get_connection_ip(item), username="root", password=item["secrets"]["password"])
                     item["status"] = 6
-                    stdin, stdout, stderr = ssh_client.exec_command("snap install microk8s")
+                    stdin, stdout, stderr = ssh_client.exec_command("snap install microk8s --classic --channel=1.32")
                     print(stdout.readlines())
                     item["status"] = 7
                     stdin, stdout, stderr = ssh_client.exec_command("microk8s addons repo remove core")
@@ -132,7 +131,7 @@ def get_join_cmd():
                 try:
                     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                     ssh_client.connect(item["secrets"]["masterIP"], username="root", password=item["secrets"]["password"])
-                    stdin, stdout, stderr = ssh_client.exec_command("microk8s add-node | grep worker | grep join")
+                    stdin, stdout, stderr = ssh_client.exec_command("microk8s add-node | grep worker | grep microk8s")
                     item["join_cmd"] = stdout.readlines()[0].strip()
                     print(item["join_cmd"])
                     item["status"] = 8

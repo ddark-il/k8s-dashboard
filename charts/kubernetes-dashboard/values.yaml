@@ -19,7 +19,7 @@ app:
   # - api - deploys just the API
   mode: 'dashboard'
   image:
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     pullSecrets: []
   scheduling:
     # Node labels for pod assignment
@@ -144,7 +144,7 @@ auth:
   role: auth
   image:
     repository: ghcr.io/ddark-il/dashboard-auth
-    tag: latest
+    tag: 1.32
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -185,7 +185,7 @@ provision:
   role: provision
   image:
     repository: ghcr.io/ddark-il/cwm-provisioner
-    tag: latest
+    tag: 1.32
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -211,7 +211,7 @@ api:
   role: api
   image:
     repository: ghcr.io/ddark-il/dashboard-api
-    tag: latest
+    tag: 1.32
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -270,8 +270,9 @@ api:
 web:
   role: web
   image:
+    pullPolicy: Always
     repository: ghcr.io/ddark-il/dashboard-web 
-    tag: latest
+    tag: 1.32
   scaling:
     replicas: 1
     revisionHistoryLimit: 10

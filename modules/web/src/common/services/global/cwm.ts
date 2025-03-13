@@ -17,7 +17,6 @@ export class CWM {
   private spec_disk :string
   private spec_os :string
   private spec_dc :string
-  private spec_lan :string
   private spec_traffic :string
   private spec_clientId :string
   private spec_apiKey :string
@@ -35,13 +34,7 @@ export class CWM {
       this.spec_os =  atob(d.data["imageid"]).trim()
       this.spec_dc = atob(d.data["zone"]).trim()
       this.spec_traffic =  atob(d.data["trafficpackage"]).trim()
-      if (atob(d.data["vlan0"]).trim().includes("lan")){
-        this.spec_lan = atob(d.data["vlan0"]).trim()
-        this.spec_masterIP = atob(d.data["ip1"]).trim()
-      }else{
-        this.spec_lan = atob(d.data["vlan1"]).trim()
-        this.spec_masterIP = atob(d.data["ip0"]).trim()
-      }
+      this.spec_masterIP = atob(d.data["ip0"]).trim()
       this.spec_clientId = d.data["apiClientId"].trim()
       this.spec_apiKey = d.data["apiSecret"].trim()
     }
@@ -69,8 +62,6 @@ export class CWM {
             "billing": this.spec_billing,
             "network_name_0": "wan",
             "network_ip_0": "auto",
-            "network_name_1": this.spec_lan,
-            "network_ip_1": "auto",
             "traffic": this.spec_traffic,
             "disk_size_0": this.spec_disk,
             "power": true
