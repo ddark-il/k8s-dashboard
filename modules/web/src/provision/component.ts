@@ -36,7 +36,7 @@ export class ProvisionQueueComponent extends ResourceListBase<ProvisionList, Pro
     this.id = ListIdentifier.pnode;
     this.groupId = ListGroupIdentifier.cluster;
     setInterval(() => {
-      this.ngOnInit; //shitty way, but it works
+      this.ngOnInit(); //shitty way, but it works
     }, 2500);
   }
 
