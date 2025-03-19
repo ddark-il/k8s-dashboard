@@ -143,8 +143,8 @@ app:
 auth:
   role: auth
   image:
-    repository: ghcr.io/ddark-il/dashboard-auth
-    tag: latest
+    repository: harbor.il.cloudwm.com/services/dashboard-auth
+    tag: 1.32
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -184,8 +184,8 @@ auth:
 provision:
   role: provision
   image:
-    repository: ghcr.io/ddark-il/cwm-provisioner
-    tag: latest
+    repository: harbor.il.cloudwm.com/services/cwm-provisioner
+    tag: 1.32
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -210,8 +210,8 @@ provision:
 api:
   role: api
   image:
-    repository: ghcr.io/ddark-il/dashboard-api
-    tag: latest
+    repository: harbor.il.cloudwm.com/services/dashboard-api
+    tag: 1.32
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
@@ -271,8 +271,8 @@ web:
   role: web
   image:
     pullPolicy: Always
-    repository: ghcr.io/ddark-il/dashboard-web 
-    tag: latest
+    repository: harbor.il.cloudwm.com/services/dashboard-web 
+    tag: 1.32
   scaling:
     replicas: 1
     revisionHistoryLimit: 10
